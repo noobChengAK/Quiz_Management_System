@@ -1,0 +1,18 @@
+1. SELECT
+2. INSERT INTO
+3. SELECT * FROM Persons WHERE Firstname = 'Peter';
+
+4. 
+CREATE PROCEDURE score()
+BEGIN
+SELECT user.username, SUM(student_answer.score) AS total FROM student_answer LEFT JOIN user ON student_answer.user_id = user.id WHERE total < 40 GROUP BY student_answer.user_id;
+END
+
+5.
+
+CREATE TRIGGER tr_testb_delete BEFORE DELETE ON user FOR EACH ROW
+BEGIN
+	INSERT INTO staff_log (`staff_id`, `quiz_id`,`TIME`)
+VALUES
+	(OLD.id, OLD.quiz_id,NOW());
+END;
